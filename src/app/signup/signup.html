@@ -1,20 +1,46 @@
-<form (ngSubmit)="signup()">
-  <div class="mb-3">
-    <label>Email</label>
-    <input type="email" class="form-control"
-           [value]="email()"
-           (input)="email.set($any($event.target).value)">
-  </div>
+<!-- <div class="heading"><h2 class="text-center text-white mb-4">Lights. Camera. Sign Up!</h2></div> -->
 
-  <div class="mb-3">
-    <label>Password</label>
-    <input type="password" class="form-control"
-           [value]="password()"
-           (input)="password.set($any($event.target).value)">
-  </div>
+<div class="signup-wrapper">
+  <!-- <h2 class="text-center text-white mb-4" id="heading">Lights. Camera. Sign Up!</h2> -->
+<h2 id="heading" class="text-center mb-4" style="color: #f5f0f0; text-shadow: 1px 1px 3px rgba(255,255,255,0.2); font-weight: bold;">
+  Lights. Camera. Sign Up!
+</h2>
 
-  <button class="btn btn-primary w-100"
-          [disabled]="!isFormValid()">
-    Sign Up
-  </button>
-</form>
+
+
+
+  <div class="bg-overlay"></div>
+ 
+  <div class="signup-card">
+    <form (ngSubmit)="signup()">
+      <h2 class="text-center mb-4 text-white">Create Your Account</h2>
+
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          [value]="email()"
+          (input)="email.set($any($event.target).value)"
+        />
+      </div>
+
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          [value]="password()"
+          (input)="password.set($any($event.target).value)"
+        />
+      </div>
+
+      <button
+        class="btn btn-primary w-100"
+        [disabled]="!isFormValid()"
+      >
+        Sign Up
+      </button>
+    </form>
+  </div>
+</div>
