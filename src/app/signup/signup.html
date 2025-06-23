@@ -21,7 +21,7 @@
           class="form-control"
           placeholder="Email"
           [value]="email()"
-          (input)="email.set($any($event.target).value)"
+          (input)="password.set($any($event.target).value)"
         />
       </div>
 
@@ -34,7 +34,26 @@
           (input)="password.set($any($event.target).value)"
         />
       </div>
+      <div class="list">
+        <ul class="password-rules text-white mt-3">
+  <li [class.text-success]="hasUppercase(password())" [class.text-danger]="!hasUppercase(password())">
+    Must contain an uppercase letter
+  </li>
 
+  <li [class.text-success]="hasLowercase(password())" [class.text-danger]="!hasLowercase(password())">
+    Must contain a lowercase letter
+  </li>
+
+  <li [class.text-success]="hasNumber(password())" [class.text-danger]="!hasNumber(password())">
+    Must contain a number
+  </li>
+
+  <li [class.text-success]="hasSymbol(password())" [class.text-danger]="!hasSymbol(password())">
+    Must contain a symbol 
+  </li>
+</ul>
+
+      </div>
       <button
         class="btn btn-primary w-100"
         [disabled]="!isFormValid()"
