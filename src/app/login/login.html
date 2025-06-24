@@ -1,36 +1,30 @@
 <div class="login-wrapper">
-  <div class="bg-overlay"></div>
+  <!-- Top-left quote -->
+  <div class="quote">Lights. Camera. Login! </div>
+
   <div class="login-card">
-    <h2 class="text-center text-white mb-4">Welcome Back 🎬</h2>
+    <!-- Left: Login Form -->
+    <div class="form-side">
+      <h2 class="title">Login</h2>
 
-    <form (submit)="loginUser($event)">
-      <div class="mb-3">
-        <label class="form-label text-white">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          [value]="email()"
-          (input)="email.set($any($event.target).value)"
-          required
-        />
-      </div>
+      <form (submit)="loginUser($event)">
+        <input type="email" placeholder="Email" class="input" [value]="email()" (input)="email.set($any($event.target).value)" required />
+        <input type="password" placeholder="Password" class="input" [value]="password()" (input)="password.set($any($event.target).value)" required />
 
-      <div class="mb-3">
-        <label class="form-label text-white">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          [value]="password()"
-          (input)="password.set($any($event.target).value)"
-          required
-        />
-      </div>
+        <button type="submit" class="btn">Login</button>
 
-      <button type="submit" class="btn btn-light w-100 mt-3">Login</button>
+        @if (loginError()) {
+          <p class="error">{{ loginError() }}</p>
+        }
 
-      @if (!loginError) {
-        <p class="text-danger text-center mt-2">Credentials in invalid </p>
-      }
-    </form>
+        <p class="text-link">
+          Don’t have an account?
+          <a routerLink="/signup">Sign up</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Right: Side Image -->
+    <div class="image-side"></div>
   </div>
 </div>

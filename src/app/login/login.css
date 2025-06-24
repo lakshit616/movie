@@ -1,33 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 .login-wrapper {
-  position: relative;
   height: 100vh;
-  background: url('idyllic_landscape-wallpaper-3840x2160.jpg') no-repeat center center/cover;
+  background: linear-gradient(to right, rgba(10, 10, 10, 0.85), rgba(30, 0, 0, 0.8)),
+              url('./login_side.jpg') no-repeat center center / cover;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-
-.bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  backdrop-filter: blur(3px);
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.login-card {
+  font-family: 'Lora', serif;
   position: relative;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Login Card (adjusted height) */
+.login-card {
+  display: flex;
+  width: 85%;
+  max-width: 850px;
+  height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  margin-top: 45px;
+}
+
+/* Left side: Form */
+.form-side {
+  flex: 1;
+  padding: 2rem;
+  background: rgba(100, 0, 0, 0.5);
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Right side: Image */
+.image-side {
+  flex: 1;
+  background: url('./login_side.jpg') no-repeat center center / cover;
+}
+
+/* Quote */
+.quote {
+  position: absolute;
+  top: 8%;
+  left: 40%;
+  font-size: 1.8rem;
+  font-weight: 30px;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(235, 209, 209, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  z-index: 3;
+  
+}
+
+/* Form Styling */
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #bb2f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background-color: #cc0000;
+}
+
+.error {
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.text-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.text-link a {
+  color: #ff9999;
+  text-decoration: underline;
 }

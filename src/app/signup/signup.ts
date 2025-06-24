@@ -1,17 +1,17 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {  Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './signup.html',
   styleUrls: ['./signup.css']
 })
 export class Signup {
   email = signal('');
   password = signal('');
-
+constructor(private router: Router) {}
   isFormValid = computed(() =>
     this.email().includes('@') && 
   this.password().length >= 6 && 
@@ -21,13 +21,16 @@ export class Signup {
   this.hasNumber(this.password())
   );
 
-  signup() {
+  signup(event:Event) {
+    
+    // event.preventDefault();
     const user = {
       email: this.email(),
       password: this.password()
     };
     localStorage.setItem('user', JSON.stringify(user));
     alert('Account created successfully!');
+    this.router.navigate(['/login']);
   }
  hasUppercase(p: string): boolean {
   return /[A-Z]/.test(p);
