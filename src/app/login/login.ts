@@ -14,7 +14,7 @@ export class LogIn {
   email = signal('');
   password = signal('');
   loginError = signal('');
-
+  loginToHome=false;
   constructor(private router: Router) {}
 
   loginUser(event: Event) {
@@ -27,12 +27,17 @@ export class LogIn {
       if (user.email === this.email() && user.password === this.password()) {
         this.loginError.set('');
         console.log(' Login successful!');
-        
-      } else {
-        this.loginError.set(' Invalid email or password');
+        localStorage.setItem('loginToHome','true');
+         this.router.navigate(['./home']);
+
+      } else if(user.email === this.email() && user.password !== this.password()) {
+        this.loginError.set(' Invalid password');
       }
-    } else {
+     else {
       this.loginError.set(' No user found. Please sign up first.');
     }
+    } 
+    
   }
+  
 }

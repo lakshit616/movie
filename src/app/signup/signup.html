@@ -15,7 +15,8 @@
           <li [class.text-success]="hasSymbol(password())" [class.text-danger]="!hasSymbol(password())">Symbol</li>
         </ul>
 
-        <button type="submit" class="btn">Sign Up</button>
+        <button type="submit" [disabled]="!isFormValid()" class="btn">Sign Up</button>
+
 
         <p class="text-link">
           Already have an account?

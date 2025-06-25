@@ -4,7 +4,7 @@ import { Signup } from './signup/signup';
 import { Home } from './home/home';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'signup', component: Signup },
   { path: 'login', component: LogIn },
   {path:'home',component:Home}
