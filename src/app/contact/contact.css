@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 3rem;
+  padding: 2.5rem 3rem;
+  background: #1f2631; /* similar to image background */
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.footer-box {
+  flex: 1 1 250px;
+  min-width: 230px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+  color: #62b6ff;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.copyright {
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-line {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.footer-line .icon {
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #62b6ff;
+  min-width: 16px;
+}
+
+.footer-line a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.footer-line a:hover {
+  color: grey;
+}
+.logo-img {
+  width: 40px;
+  height: 40px;
+  background-image: url('./logo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 3px;
+}
