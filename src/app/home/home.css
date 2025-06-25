@@ -1,0 +1,4 @@
+.main {
+  height: 900px; /* temporary space */
+background: #171617;
+background: linear-gradient(90deg, rgba(23, 22, 23, 1) 0%, rgba(102, 102, 145, 1) 50%, rgba(20, 20, 36, 1) 100%, rgba(12, 13, 13, 1) 100%);}
