@@ -1,71 +1,42 @@
 <app-header></app-header>
-<div class="main" id="main-section"></div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="main" id="main-section">
+<section class="home-container">
+  <h2 class="section-title">
+     Featured Movies
+  </h2>
+
+  <div class="movie-grid">
+    @for (movie of movies(); track movie.title) {
+      <div
+        class="movie-card"
+        (click)="selectMovie(movie)"
+        [class.blurred]="selectedMovie() && selectedMovie()?.title !== movie.title"
+      >
+        <img [src]="movie.poster" alt="{{ movie.title }}" />
+        <h3>{{ movie.title }}</h3>
+        <p class="genre-rating">{{ movie.genre }} | ⭐ {{ movie.rating }}</p>
+        <p class="desc">{{ movie.description }}</p>
+      </div>
+    }
+  </div>
+
+  @if (selectedMovie()) {
+    <div class="overlay" (click)="clearSelection()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <img [src]="selectedMovie()?.poster" alt="Selected Movie Poster" />
+        <div class="movie-details">
+          <h2>{{ selectedMovie()?.title }}</h2>
+          <p>{{ selectedMovie()?.genre }} | ⭐ {{ selectedMovie()?.rating }}</p>
+          <p>{{ selectedMovie()?.description }}</p>
+          <p class="coming">More info (cast, director...) coming soon!</p>
+        </div>
+      </div>
+    </div>
+  }
+</section>
+
+</div>
+
 
 <app-contact >
     <div class="contact" id="contact-section"></div>
