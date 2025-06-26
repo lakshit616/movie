@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal,computed } from '@angular/core';
 import {  RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -9,13 +9,12 @@ import { Router } from '@angular/router';
   styleUrl: './header.css'
 })
 export class Header {
-constructor(private router: Router) {}
-  //  checkLogin(){
-  //   const loginToHome = localStorage.getItem('loginToHome')
-  //   if(this.loginToHome.loginToHome==='true'){
-  //     return true;
-  //   }
-  //  }
+  isLoggedIn = signal(false); 
+constructor(private router: Router) {
+  const flag = localStorage.getItem('loginToHome');
+    this.isLoggedIn.set(flag === 'true'); 
+  }
+  
   checkHome(event:Event){
     if (this.router.url==='/home'){
       this.scrollToSection('main-section');
@@ -33,5 +32,8 @@ constructor(private router: Router) {}
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
+logout(){
+  this.isLoggedIn.set(false);
+  localStorage.removeItem('loginToHome');
+}
 }
