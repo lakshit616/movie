@@ -1,0 +1,23 @@
+<header class="header" id="header-section">
+  <div class="header-content">
+    <div class="logo">
+  <div class="logo-img"></div>
+  <span class="site-name">ovieVerse</span>
+</div>
+
+
+    <nav class="nav-links">
+<a (click)="checkHome($event)">Home</a>
+      <a (click)="scrollToSection('contact-section')">About Us</a>
+      <a routerLink="/about">Favourite</a>
+       <!-- Login or User Icon -->
+@if (!isLoggedIn()) {
+  <a routerLink="/login">Login</a>
+} @else {
+  <img src="assets/images/user.png" alt="User" width="20" height="20">
+  <button (click)="logout()">Logout</button>
+}
+
+    </nav>
+  </div>
+</header>
