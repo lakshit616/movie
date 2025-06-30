@@ -1,43 +1,50 @@
+  
+
 <app-header></app-header>
+
 <div class="main" id="main-section">
-<section class="home-container">
-  <h2 class="section-title">
-     Featured Movies
-  </h2>
 
-  <div class="movie-grid">
-    @for (movie of movies(); track movie.title) {
-      <div
-        class="movie-card"
-        (click)="selectMovie(movie)"
-        [class.blurred]="selectedMovie() && selectedMovie()?.title !== movie.title"
-      >
-        <img [src]="movie.poster" alt="{{ movie.title }}" />
-        <h3>{{ movie.title }}</h3>
-        <p class="genre-rating">{{ movie.genre }} | ⭐ {{ movie.rating }}</p>
-        <p class="desc">{{ movie.description }}</p>
-      </div>
-    }
-  </div>
+  <section class="home-container">
+    <h2 class="section-title" class="shiny-text">Trending Movies</h2>
 
-  @if (selectedMovie()) {
-    <div class="overlay" (click)="clearSelection()">
-      <div class="modal-card" (click)="$event.stopPropagation()">
-        <img [src]="selectedMovie()?.poster" alt="Selected Movie Poster" />
-        <div class="movie-details">
-          <h2>{{ selectedMovie()?.title }}</h2>
-          <p>{{ selectedMovie()?.genre }} | ⭐ {{ selectedMovie()?.rating }}</p>
-          <p>{{ selectedMovie()?.description }}</p>
-          <p class="coming">More info (cast, director...) coming soon!</p>
+    <div class="movie-grid">
+      @for (movie of movies; track movie.id) {
+        <div
+          class="movie-card"
+          (click)="selectMovie(movie.title)"
+          
+          [class.blurred]="selectedMovie() && selectedMovie()?.id !== movie.id"
+        >
+          <img [src]="movie.movieImage" alt="{{ movie.title }}" />
+          <h3>{{ movie.title }}</h3>
+          <p class="genre-rating">{{ movie.movieGenres }} | ⭐ {{ movie.imDbRating }}</p>
+          <p class="desc">{{ movie.releaseYear }}</p>
+        </div>
+      }
+    </div>
+
+    @if (selectedMovie()) {
+      <div class="overlay" (click)="clearSelection()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
+          <img [src]="selectedMovie()?.Poster" alt="Selected Movie Poster" />
+          <div class="movie-details">
+            <h2>{{ selectedMovie()?.Title }}</h2>
+            <p>{{ selectedMovie()?.Genre }} | ⭐ {{ selectedMovie()?.imDbRating }}</p>
+            <p>{{ selectedMovie()?.Plot }}</p>
+            <p>Language - {{ selectedMovie()?.Language }}</p>
+            <p>Runtime - {{ selectedMovie()?.Runtime }}</p>
+            <p>Actors - {{selectedMovie()?.Actors}}</p>
+            <p>Director - {{selectedMovie()?.Director}}</p>
+            <p>Writer - {{selectedMovie()?.Writer }}</p>
+          </div>
         </div>
       </div>
-    </div>
-  }
-</section>
-
+    }
+  </section>
 </div>
 
 
-<app-contact >
-    <div class="contact" id="contact-section"></div>
-</app-contact>
+
+<!-- <app-contact>
+  <div class="contact" id="contact-section"></div>
+</app-contact> -->
