@@ -1,0 +1,170 @@
+/* Home section background */
+.home-container {
+min-height: 100vh;
+padding: 2rem;
+background: linear-gradient(135deg, #1c1b2f 0%, #1a2639 100%);
+color: #fff;
+font-family: 'Lora', serif;
+}
+
+/* Section title */
+.section-title {
+text-align: center;
+font-size: 2.5rem;
+margin-bottom: 2rem;
+font-weight: 600;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+}
+
+/* Movie grid layout */
+.movie-grid {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 2rem;
+}
+
+/* Movie card */
+.movie-card {
+background: linear-gradient(145deg, #111111, #2f2c54);
+border-radius: 16px;
+padding: 1.5rem;
+width: 300px;
+color: white;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+cursor: pointer;
+transition: transform 0.3s, filter 0.3s, opacity 0.3s;
+text-align: center;
+backdrop-filter: blur(4px);
+}
+
+.movie-card:hover {
+transform: scale(1.05);
+background: linear-gradient(145deg, #443f74, #332e5b);
+}
+
+.movie-card img {
+width: 100%;
+height: 300px;
+object-fit: cover;
+border-radius: 10px;
+margin-bottom: 1rem;
+
+}
+
+.genre-rating {
+font-weight: 500;
+margin: 0.5rem 0;
+color: #ffdb5c;
+}
+
+.desc {
+font-size: 0.9rem;
+color: #ccc;
+}
+
+/* Blur other cards */
+.blurred {
+filter: blur(3px);
+pointer-events: none;
+opacity: 0.5;
+}
+
+/* Overlay */
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+backdrop-filter: blur(8px);
+background-color: rgba(0, 0, 0, 0.4);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+/* Expanded modal card */
+.modal-card {
+display: flex;
+gap: 2rem;
+background: #2a2848;
+padding: 2rem;
+border-radius: 16px;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+max-width: 800px;
+width: 90%;
+position: relative;
+}
+
+/* Poster on left */
+.modal-card img {
+width: 300px;
+height: 420px;
+object-fit: cover;
+border-radius: 12px;
+}
+
+/* Divider line */
+.modal-card::before {
+content: '';
+position: absolute;
+left: 340px;
+top: 10%;
+height: 80%;
+width: 1px;
+background: rgba(255, 255, 255, 0.2);
+}
+
+/* Details on right */
+.movie-details {
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+color: #f2f2f2;
+padding-left: 1.5rem;
+}
+
+.movie-details h2 {
+font-size: 2rem;
+margin-bottom: 0.5rem;
+}
+
+.movie-details p {
+margin-bottom: 0.6rem;
+font-size: 1rem;
+}
+
+.coming {
+font-style: italic;
+color: #999;
+margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.modal-card {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.modal-card::before {
+display: none;
+}
+
+.modal-card img {
+width: 90%;
+height: auto;
+}
+
+.movie-details {
+padding-left: 0;
+padding-top: 1rem;
+}
+}
