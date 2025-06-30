@@ -5,10 +5,49 @@
   <span class="site-name">ovieVerse</span>
 </div>
 
+    <div class="search">
+  <input
+    type="text"
+    placeholder="Search your movie"
+    (input)="onSearchInput($event)"
+    [value]="searchQuery()"
+  />
+
+  <!-- Dropdown for results -->
+  @if (searchResults().length > 0) {
+    <ul class="search-results">
+      @for (result of searchResults(); track result.Title) {
+        <li class="search-result-item" (click)="selectMovie(result.imdbID)" 
+        [class.blurred]="selectedMovie() && selectedMovie()?.id !== result.imdbID">
+          <img [src]="result.Poster !== 'N/A' ? result.Poster : 'assets/images/no-poster.png'" alt="Poster" />
+          <span>{{ result.Title }} ({{ result.Year }})</span>
+        </li>
+      }
+    </ul>
+  }
+  @if (selectedMovie()) {
+  <div class="overlay" (click)="clearSelection()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <img [src]="selectedMovie().Poster" alt="Poster" />
+      <div class="movie-details">
+        <h2>{{ selectedMovie()?.Title }}</h2>
+            <p>{{ selectedMovie()?.Genre }} | ⭐ {{ selectedMovie()?.imdbRating }}</p>
+            <p>{{ selectedMovie()?.Plot }}</p>
+            <p>Language - {{ selectedMovie()?.Language }}</p>
+            <p>Runtime - {{ selectedMovie()?.Runtime }}</p>
+            <p>Actors - {{selectedMovie()?.Actors}}</p>
+            <p>Director - {{selectedMovie()?.Director}}</p>
+            <p>Writer - {{selectedMovie()?.Writer }}</p>
+      </div>
+    </div>
+  </div>
+}
+</div>
 
     <nav class="nav-links">
 <a (click)="checkHome($event)">Home</a>
-      <a (click)="scrollToSection('contact-section')">About Us</a>
+      <a routerLink="/about">About Us</a>
+      <a routerLink="/top-rated">Top Rated</a>
       <a routerLink="/about">Favourite</a>
        <!-- Login or User Icon -->
 @if (!isLoggedIn()) {
