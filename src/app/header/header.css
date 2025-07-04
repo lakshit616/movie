@@ -49,6 +49,7 @@
   font-weight: 500;
   position: relative;
   transition: color 0.3s ease;
+  top: 11px;
 }
 
 .nav-links a::after {
@@ -73,7 +74,7 @@
 .logo-img {
   width: 40px;
   height: 40px;
-  background-image: url('./logo.jpg'); /* ✅ CSS mein yeh chalega */
+  background-image: url('logo.jpg'); /* ✅ CSS mein yeh chalega */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -170,4 +171,7 @@ border-radius: 4px;
 .coming {
   margin-top: 1rem;
   color: #ccc;
+}
+.logo{
+  cursor: pointer;
 }

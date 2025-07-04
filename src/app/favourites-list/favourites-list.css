@@ -1,16 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;700&display=swap");
-
 /* Home section background */
 .home-container {
 min-height: 100vh;
 padding: 2rem;
-/* background-image: linear-gradient(to right, #f8f2f5, #e2d9dd, #cec0c4, #b9a8ab, #a59093, #907c7b, #7a6a64, #64584f, #47453c, #2e322c, #1b1e1d, #060707); */
+background-image: linear-gradient(to right, #f8f2f5, #e2d9dd, #cec0c4, #b9a8ab, #a59093, #907c7b, #7a6a64, #64584f, #47453c, #2e322c, #1b1e1d, #060707);
 color: #fff;
 font-family: 'Lora', serif;
 }
 
 /* Section title */
-.section-title {
+/* .section-title {
 text-align: center;
 font-size: 2.5rem;
 margin-bottom: 2rem;
@@ -19,7 +17,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 1rem;
-}
+} */
 
 /* Movie grid layout */
 .movie-grid {
@@ -172,35 +170,7 @@ padding-top: 1rem;
 }
 }
 
-.shiny-text {
-  font-size: 3rem;
-  font-weight: bold;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #b5b5b5a4; /* Soft metallic tone */
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(187, 74, 74, 0.8) 50%,
-    rgba(255, 255, 255, 0) 60%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;              /* REQUIRED for clip to work */
-  display: inline-block;
-  animation: shine 1.5s linear infinite;
-}
 
-@keyframes shine {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: -100%;
-  }
-}
 .variable-title {
   font-family: "Roboto Flex", sans-serif;
   font-variation-settings: 'wght' 400;
@@ -217,9 +187,4 @@ padding-top: 1rem;
 .variable-title:hover {
   font-variation-settings: 'wght' 700;
   transform: scale(1.02);
-}
-.fav-active {
-  background-color: crimson;
-  color: white;
-  font-weight: bold;
 }

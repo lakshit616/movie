@@ -1,6 +1,6 @@
 <header class="header" id="header-section">
   <div class="header-content">
-    <div class="logo">
+    <div class="logo" (click)="reload_page()">
   <div class="logo-img"></div>
   <span class="site-name">ovieVerse</span>
 </div>
@@ -48,12 +48,19 @@
 <a (click)="checkHome($event)">Home</a>
       <a routerLink="/about">About Us</a>
       <a routerLink="/top-rated">Top Rated</a>
-      <a routerLink="/about">Favourite</a>
+      <a routerLink="/favourites-list">Favourite</a>
        <!-- Login or User Icon -->
-@if (!isLoggedIn()) {
+<!-- @if (!isLoggedIn()) {
   <a routerLink="/login">Login</a>
 } @else {
   <img src="assets/images/user.png" alt="User" width="20" height="20">
+  <button (click)="logout()">Logout</button>
+} -->
+  <!-- Login or User Icon -->
+@if (!auth.loginStatus()) {
+  <a routerLink="/login">Login</a>
+} @else {
+  <img src="man.png" width="40" height="50" alt="user" />
   <button (click)="logout()">Logout</button>
 }
 

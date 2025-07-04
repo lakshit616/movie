@@ -9,17 +9,17 @@
 
 
     <div class="movie-grid">
-      @for (movie of movies; track movie.id) {
+      @for (movie of movies(); track movie.id) {
         <div
           class="movie-card"
-          (click)="selectMovie(movie.title)"
+          (click)="selectMovie(movie.Title)"
           
           [class.blurred]="selectedMovie() && selectedMovie()?.id !== movie.id"
         >
-          <img [src]="movie.movieImage" alt="{{ movie.title }}" />
-          <h3>{{ movie.title }}</h3>
-          <p class="genre-rating">{{ movie.movieGenres }} | ⭐ {{ movie.imDbRating }}</p>
-          <p class="desc">{{ movie.releaseYear }}</p>
+          <img [src]="movie.Poster" alt="{{ movie.title }}" />
+          <h3>{{ movie.Title }}</h3>
+          <p class="genre-rating">{{ movie.Genre }} | ⭐ {{ movie.imdbRating }}</p>
+          <p class="desc">{{ movie.Director }}</p>
         </div>
       }
     </div>
@@ -37,9 +37,7 @@
             <p>Actors - {{selectedMovie()?.Actors}}</p>
             <p>Director - {{selectedMovie()?.Director}}</p>
             <p>Writer - {{selectedMovie()?.Writer }}</p>
-           <button (click)="favourite($event)" [class.fav-active]="isFav">
-  {{ isFav ? '★' : '☆' }} Favourite
-</button>
+           
 
           </div>
         </div>

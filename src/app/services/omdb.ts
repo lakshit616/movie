@@ -35,7 +35,7 @@ searchMovies(title: string): Observable<any> {
     const url = `${this.apiUrl}?apikey=${this.apiKey}&i=${encodeURIComponent(title)}`;
     return this.http.get<any>(url); // ✅ just return Observable, no subscribe here
   }
-   searchMovies_desc(title: string): Observable<any> { //imdb id se
+   searchMovies_desc(title: string): Observable<any> { //title se
     const url = `${this.apiUrl}?apikey=${this.apiKey}&t=${encodeURIComponent(title)}`;
     return this.http.get<any>(url); // ✅ just return Observable, no subscribe here
   }
