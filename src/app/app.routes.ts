@@ -4,8 +4,8 @@ import { Signup } from './signup/signup';
 import { Home } from './home/home';
 import { TopRated } from './top-rated/top-rated';
 import { About } from './about/about';
+import { FavouritesList } from './favourites-list/favourites-list';
 
-import { Path } from 'ogl';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'signup', component: Signup },
@@ -13,5 +13,5 @@ export const routes: Routes = [
   {path:'home',component:Home},
   {path:'top-rated',component:TopRated},
   {path:'about',component:About},
-
+{path:'favourites-list',component:FavouritesList}
 ];

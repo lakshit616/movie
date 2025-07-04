@@ -1,6 +1,7 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {  Router, RouterLink } from '@angular/router';
+import { AuthService } from '../services/AuthService';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -11,7 +12,7 @@ import {  Router, RouterLink } from '@angular/router';
 export class Signup {
   email = signal('');
   password = signal('');
-constructor(private router: Router) {}
+constructor(private router: Router,private auth:AuthService) {}
   isFormValid = computed(() =>
     this.email().includes('@') && 
   this.password().length >= 6 && 
@@ -21,17 +22,17 @@ constructor(private router: Router) {}
   this.hasNumber(this.password())
   );
 
-  signup(event:Event) {
-    
-    // event.preventDefault();
-    const user = {
-      email: this.email(),
-      password: this.password()
-    };
-    localStorage.setItem('user', JSON.stringify(user));
-    alert('Account created successfully!');
-    this.router.navigate(['/login']);
-  }
+  signup(event: Event) {
+  event.preventDefault();
+  this.auth.signup(this.email(), this.password()).then((success) => {
+    if (success) {
+      alert('Account created successfully!');
+      this.router.navigate(['/login']);
+    } else {
+      alert('Signup failed. Try again.');
+    }
+  });
+}
  hasUppercase(p: string): boolean {
   return /[A-Z]/.test(p);
 }
@@ -47,5 +48,7 @@ hasNumber(p: string): boolean {
 hasSymbol(p: string): boolean {
   return /[!@#$%^&*(),.?":{}|<>]/.test(p);
 }
-
+error(){
+  return "ahving an error";
+}
 }
