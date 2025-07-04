@@ -1,6 +1,6 @@
 <app-header></app-header>
 <section class="home-container">
-  <h2 class="section-title">Top Rated Movies</h2>
+    <h2 class="variable-title">Top Rated Movies</h2>
 
   <div class="movie-grid">
     @for (movie of movies; track movie.id) {
@@ -12,7 +12,7 @@
         <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}" />
         <h3>{{ movie.title }}</h3>
         <p class="genre-rating">⭐ {{ movie.vote_average }}</p>
-        <p class="desc">{{ movie.overview }}</p>
+        <!-- <p class="desc">{{ movie.overview }}</p> -->
       </div>
     }
   </div>
