@@ -14,9 +14,10 @@
           <li [class.text-success]="hasNumber(password())" [class.text-danger]="!hasNumber(password())">Number</li>
           <li [class.text-success]="hasSymbol(password())" [class.text-danger]="!hasSymbol(password())">Symbol</li>
         </ul>
+       <p class="error-message" *ngIf="error()">{{ error() }}</p>
 
         <button type="submit" [disabled]="!isFormValid()" class="btn">Sign Up</button>
-
+         
 
         <p class="text-link">
           Already have an account?
