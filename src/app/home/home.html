@@ -11,19 +11,25 @@
     <div class="movie-grid">
       @for (movie of movies; track movie.id) {
         <div
+       
           class="movie-card"
-          (click)="selectMovie(movie.title)"
+          (click)="selectMovie(movie.name)"
           
           [class.blurred]="selectedMovie() && selectedMovie()?.id !== movie.id"
         >
-          <img [src]="movie.movieImage" alt="{{ movie.title }}" />
-          <h3>{{ movie.title }}</h3>
-          <p class="genre-rating">{{ movie.movieGenres }} | ⭐ {{ movie.imDbRating }}</p>
-          <p class="desc">{{ movie.releaseYear }}</p>
+          <img [src]="movie.poster_url" alt="{{ movie.title }}"  />
+
+          <h3>{{ movie.name }}</h3>
+          <p class="genre-rating">{{ movie.genre }} | ⭐ {{ movie.director }}</p>
+          <p class="desc">{{ movie.cast }}</p>
         </div>
       }
     </div>
-
+<div class="pagination-controls">
+  <button (click)="prevPage($event)"  [disabled]="this.movieService.currentPage()===1">Previous</button>
+  <!-- <span>Page {{ currentPage() }} of {{ totalPages }}</span> -->
+  <button (click)="nextPage($event)" [disabled]="this.movieService.currentPage() === this.movieService.totalPages()">Next</button>
+</div>
     @if (selectedMovie()) {
       <div class="overlay" (click)="clearSelection()">
         <div class="modal-card" (click)="$event.stopPropagation()">
