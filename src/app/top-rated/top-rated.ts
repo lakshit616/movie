@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { MovieService } from '../services/movie';  
+// import { MovieService } from '../services/movie';  
+import { TopRatedMovies } from '../services/top_rated';
 import { Header } from '../header/header';
 import { Omdb } from '../services/omdb';
 @Component({
@@ -14,13 +15,13 @@ import { Omdb } from '../services/omdb';
 export class TopRated {
 selectedMovie = signal<any | null>(null);
 
-  constructor(public movieService: MovieService, private omdb : Omdb) {
-    this.movieService.fetchMovies_2(); // ✅ fetch from API on load
+  constructor(public toprated : TopRatedMovies, private omdb : Omdb) {
+    this.toprated.fetchMovies_2(); //  fetch from API on load
   }
 
-  // ✅ Access movies as a getter to avoid initialization error
+  //  Access movies as a getter to avoid initialization error
   get movies() {
-    return this.movieService.movies_2();
+    return this.toprated.movies_2();
   }
 
   selectMovie(movie: string) {
