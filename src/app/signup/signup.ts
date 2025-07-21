@@ -12,6 +12,7 @@ import { AuthService } from '../services/AuthService';
 export class Signup {
   email = signal('');
   password = signal('');
+  username=signal('');
 constructor(private router: Router,private auth:AuthService) {}
   isFormValid = computed(() =>
     this.email().includes('@') && 
@@ -24,7 +25,7 @@ constructor(private router: Router,private auth:AuthService) {}
 
   signup(event: Event) {
   event.preventDefault();
-  this.auth.signup(this.email(), this.password()).then((success) => {
+  this.auth.signup(this.username(),this.email(), this.password()).then((success) => {
     if (success) {
       alert('Account created successfully!');
       this.router.navigate(['/login']);
@@ -48,7 +49,7 @@ hasNumber(p: string): boolean {
 hasSymbol(p: string): boolean {
   return /[!@#$%^&*(),.?":{}|<>]/.test(p);
 }
-error(){
-  return "ahving an error";
-}
+// error(){
+//   return "having an error";
+// }
 }

@@ -15,7 +15,7 @@ export class LogIn {
   email = signal('');
   password = signal('');
   loginError = signal('');
-  loginToHome=false;
+  // loginToHome=false;
   constructor(private router: Router,private auth:AuthService) {}
 
   // loginUser(event: Event) {
@@ -40,16 +40,20 @@ export class LogIn {
   //   } 
     
   // }
-   loginUser(event: Event) {
+   async loginUser(event: Event) {
   event.preventDefault();
+  
   this.auth.login(this.email(), this.password()).then((success) => {
     if (success) {
       this.loginError.set('');
       this.router.navigate(['/home']);
-    } else {
+    } 
+    
+    else {
       this.loginError.set('Invalid credentials or user not found.');
     }
   });
+  
 }
 
 }

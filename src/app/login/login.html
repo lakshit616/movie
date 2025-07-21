@@ -8,9 +8,9 @@
       <h2 class="title">Login</h2>
 
       <form (submit)="loginUser($event)">
-        <input type="email" placeholder="Email" class="input" [value]="email()" (input)="email.set($any($event.target).value)" required />
+        <input type="email" placeholder="Email" class="input" [value]="email()" (input)="email.set($any($event.target).value)" autocomplete="off" required />
         <input type="password" placeholder="Password" class="input" [value]="password()" (input)="password.set($any($event.target).value)" required />
-
+        
         <button type="submit" class="btn">Login</button>
 
         @if (loginError()) {

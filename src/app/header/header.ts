@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Omdb } from '../services/omdb'; // Make sure the service is in this path
 import { AuthService } from '../services/AuthService';
+// import { favourites } from '../services/favourites';
 @Component({
 selector: 'app-header',
 standalone: true,
@@ -16,8 +17,9 @@ searchQuery = signal('');
 searchResults = signal<any[]>([]);
 selectedMovie = signal<any | null>(null);
 
-constructor(private router: Router, private omdb: Omdb,public auth:AuthService) {
-const flag = localStorage.getItem('loginToHome');
+constructor(private router: Router, private omdb: Omdb,public auth:AuthService/*,private fav : favourites*/) {
+const flag = localStorage.getItem('this.auth.getToken');
+console.log('yeh',flag);
 this.isLoggedIn.set(flag === 'true');
 }
 
@@ -43,6 +45,7 @@ element.scrollIntoView({ behavior: 'smooth' });
 
   logout() {
     this.auth.logout();
+    // this.fav.favourite_list.set([]);
     this.router.navigate(['/']);
   }
 
@@ -93,8 +96,8 @@ if (query.length >= 3) {
     const isClickInsideSearch = target.closest('.search');
 
     if (!isClickInsideSearch) {
-      this.searchResults.set([]);     // ✅ dropdown clear
-      this.selectedMovie.set(null);   // ✅ optional: modal also clear
+      this.searchResults.set([]);     //  dropdown clear
+      this.selectedMovie.set(null);   
     }
   }
   reload_page(){

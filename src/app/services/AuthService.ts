@@ -1,56 +1,72 @@
-// src/app/services/AuthService.ts
-import { Injectable, signal } from '@angular/core';
-import {
-  Auth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  User
-} from '@angular/fire/auth';
-import { inject } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private auth: Auth = inject(Auth);
-  private currentUser = signal<User | null>(null);
-  isLoggedIn = signal(false);
+  private apiUrl = 'https://localhost:7194/api/auth';
 
-  constructor() {
-    this.auth.onAuthStateChanged((user) => {
-      this.currentUser.set(user);
-      this.isLoggedIn.set(!!user);
-    });
+  // Private signals to manage state internally
+  private _token = signal<string | null>(localStorage.getItem('token'));
+  public _isLoggedIn = signal(!!localStorage.getItem('token'));
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  // Login method using JWT
+  login(email: string, password: string): Promise<boolean> {
+    
+    return firstValueFrom(
+      this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password })
+    )
+      .then(res => {
+        if (res && res.token) {
+          this._token.set(res.token);
+          localStorage.setItem('token', res.token);
+          this._isLoggedIn.set(true);
+          return true;
+        } else {
+          console.error('Login failed: token not present in response', res);
+          return false;
+        }
+      })
+      .catch(err => {
+        console.error('Login failed', err.error || err.message || err);
+        return false;
+      });
   }
 
-  async login(email: string, password: string): Promise<boolean> {
-    try {
-      await signInWithEmailAndPassword(this.auth, email, password);
-      return true;
-    } catch (err) {
-      console.error('Login failed:', err);
-      return false;
-    }
+  // Signup method (uses passwordHash field to match .NET model)
+  signup(name: string, email: string, password: string): Promise<boolean> {
+    return firstValueFrom(
+      this.http.post(`${this.apiUrl}/register`, {
+        name,
+        email,
+        passwordHash: password // Backend expects 'passwordHash' field
+      })
+    )
+      .then(() => true)
+      .catch(err => {
+        console.error('Signup failed', err.error || err.message || err);
+        return false;
+      });
   }
 
-  async signup(email: string, password: string): Promise<boolean> {
-    try {
-      await createUserWithEmailAndPassword(this.auth, email, password);
-      return true;
-    } catch (err) {
-      console.error('Signup failed:', err);
-      return false;
-    }
-  }
-
+  // Logout user
   logout() {
-    return signOut(this.auth);
+    localStorage.removeItem('token');
+   
+    this._token.set(null);
+    this._isLoggedIn.set(false);
+    this.router.navigate(['/login']);
   }
 
-  get loginStatus() {
-    return this.isLoggedIn;
-  }
+  // Computed property for external access to login state
+  isLoggedIn = computed(() => this._isLoggedIn());
 
-  get user() {
-    return this.currentUser();
+  // Get current token
+  getToken(): string | null {
+    return this._token() || localStorage.getItem('token');
   }
+  
 }

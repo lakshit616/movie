@@ -5,7 +5,8 @@
     <div class="form-side">
       <h2 class="title">Sign Up</h2>
       <form (submit)="signup($event)">
-        <input type="email" placeholder="Email" class="input" [value]="email()" (input)="email.set($any($event.target).value)" required />
+        <input type="text" placeholder="Username" class="input" [value]="username()" (input)="username.set($any($event.target).value)" autocomplete="off" required >
+        <input type="email" placeholder="Email" class="input" [value]="email()" (input)="email.set($any($event.target).value)" autocomplete="off" required />
         <input type="password" placeholder="Password" class="input" [value]="password()" (input)="password.set($any($event.target).value)" required />
 
         <ul class="password-rules">
@@ -14,7 +15,7 @@
           <li [class.text-success]="hasNumber(password())" [class.text-danger]="!hasNumber(password())">Number</li>
           <li [class.text-success]="hasSymbol(password())" [class.text-danger]="!hasSymbol(password())">Symbol</li>
         </ul>
-       <p class="error-message" *ngIf="error()">{{ error() }}</p>
+       <!-- <p class="error-message" *ngIf="error()">{{ error() }}</p> -->
 
         <button type="submit" [disabled]="!isFormValid()" class="btn">Sign Up</button>
          

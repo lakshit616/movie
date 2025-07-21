@@ -2,6 +2,8 @@
 
 <app-header></app-header>
 
+
+@if(auth._isLoggedIn()){
 <div class="main" id="main-section">
 
   <section class="home-container">
@@ -9,7 +11,7 @@
 
 
     <div class="movie-grid">
-      @for (movie of movies(); track movie.id) {
+      @for (movie of movies(); track movie.imdbId) {
         <div
           class="movie-card"
           (click)="selectMovie(movie.Title)"
@@ -45,7 +47,7 @@
     }
   </section>
 </div>
-
+}
 
 
 <!-- <app-contact>

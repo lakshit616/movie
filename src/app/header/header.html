@@ -57,7 +57,7 @@
   <button (click)="logout()">Logout</button>
 } -->
   <!-- Login or User Icon -->
-@if (!auth.loginStatus()) {
+@if (!auth._isLoggedIn()) {
   <a routerLink="/login">Login</a>
 } @else {
   <img src="man.png" width="40" height="50" alt="user" />

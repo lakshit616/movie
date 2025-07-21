@@ -16,9 +16,9 @@
 /* Smaller, centered card */
 .signup-card {
   display: flex;
-  width: 85%;
+  width: 89%;
   max-width: 700px;
-  height: 420px;
+  height: 470px;
   border-radius: 20px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
