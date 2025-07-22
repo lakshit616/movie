@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="main about-bg" [class.details-mode]="mode() === 'details'">
+  <div class="overlay"></div>
+
+  <!-- Tab Switcher -->
+  <div class="tab-switcher">
+    <div class="tab-box">
+      <button [class.active]="mode() === 'profile'" (click)="mode.set('profile')">Profile</button>
+      <button [class.active]="mode() === 'details'" (click)="mode.set('details')">For Details</button>
+    </div>
+  </div>
+
+  <!-- Profile Content -->
+  <div class="profile-content" [class.hide]="mode() === 'details'">
+    <div class="left-text">
+      <h1>Empowering<br />Creativity<br />Everywhere</h1>
+    </div>
+    <div class="right-text">
+      <p>
+        MovieVerse is a platform designed to explore and discover movies from all genres. Find ratings,
+        details, and recommendations with ease.
+      </p>
+    </div>
+  </div>
+
+  <!-- Details Content -->
+  <div class="details-content" [class.show]="mode() === 'details'">
+    <div class="details-columns">
+      <div class="column-group">
+        <div class="col">
+          <h3><u>About MovieVerse</u></h3>
+          <p>
+            MovieVerse is your go-to movie companion — explore, track and enjoy cinema from all over the world.
+          </p>
+        </div>
+        <div class="col">
+          <h3><u>Get in Touch</u></h3>
+          <p>A-99 Ranjeet Nagar, Alwar</p>
+          <a href="mailto:lakshit1304khandelwal@gmail.com">Email At Us</a><br><br>
+          <p>Phone: +91 8949504784</p>
+        </div>
+      </div>
+      <div class="col social-col">
+        <h3><u>Social Links</u></h3>
+        <p><a href="https://www.instagram.com/khandelwal.lakshit" target="_blank">Instagram</a></p>
+        <p><a href="https://www.linkedin.com/in/lakshit-khandelwal-019b8621a" target="_blank">LinkedIn</a></p>
+      </div>
+      <h1 class="heading">About Us</h1>
+    </div>
+    <!-- <h1 class="heading">About Us</h1> -->
+  </div>
+
+  
+</div>
