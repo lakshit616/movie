@@ -14,12 +14,13 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './favourites-list.css'
 })
 export class FavouritesList {
+  
   movies = signal<any[]>([]);
   selectedMovie = signal<any | null>(null);
 constructor(private fav: favourites, private omdb: Omdb, public auth: AuthService) {
   effect(() => {
     const titles = this.fav.favourite_list();  // Reactive signal
-
+    
     this.movies.set([]); // Clear old
 
     for (const title of titles) {

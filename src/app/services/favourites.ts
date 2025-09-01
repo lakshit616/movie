@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './AuthService';
 
@@ -16,7 +16,7 @@ export class favourites {
      
     movieId:movieId,                    
     movieTitle: title,             
-    posterUrl: poster //  if you store OMDB ID or DB movie ID
+    posterUrl: poster 
     };
 console.log('Sending to backend:', movie);
     this.http.post(`${this.apiUrl}/add`, movie).subscribe({
