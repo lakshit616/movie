@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
-.signup-wrapper {
+.login-wrapper {
   height: 100vh;
-  background: linear-gradient(to right, rgba(20, 0, 0, 0.85), rgba(70, 0, 0, 0.8)),
-              url('./background_image.jpg') no-repeat center center / cover;
+  background: linear-gradient(to right, rgba(10, 10, 10, 0.85), rgba(30, 0, 0, 0.8)),
+              url('./login_side.jpg') no-repeat center center / cover;
   background-attachment: fixed;
   display: flex;
   align-items: center;
@@ -13,22 +13,22 @@
   padding: 2rem;
 }
 
-/* Smaller, centered card */
-.signup-card {
+/* Login Card (adjusted height) */
+.login-card {
   display: flex;
-  width: 89%;
-  max-width: 700px;
-  height: 470px;
+  width: 85%;
+  max-width: 850px;
+  height: 460px;
   border-radius: 20px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   z-index: 2;
-  margin-left: 100px;
+  margin-top: 45px;
 }
 
-/* Left side form */
+/* Left side: Form */
 .form-side {
   flex: 1;
   padding: 2rem;
@@ -39,30 +39,29 @@
   justify-content: center;
 }
 
-/* Right image */
+/* Right side: Image */
 .image-side {
   flex: 1;
-  background: url('./background_image.jpg') no-repeat center center / cover;
+  background: url('./login_side.jpg') no-repeat center center / cover;
 }
 
-/* Quote on left, vertically centered to card */
-.signup-heading {
+/* Quote */
+.quote {
   position: absolute;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 8%;
+  left: 40%;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 30px;
   color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 6px rgba(235, 209, 209, 0.6);
   backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.2);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
   z-index: 3;
+  
 }
 
-/* Form Elements */
+/* Form Styling */
 .title {
   text-align: center;
   font-size: 24px;
@@ -85,7 +84,7 @@
 .btn {
   width: 100%;
   padding: 0.8rem;
-  background-color: #b30000;
+  background-color: #bb2f2f;
   color: white;
   border: none;
   border-radius: 8px;
@@ -97,28 +96,17 @@
   background-color: #cc0000;
 }
 
+.error {
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 10px;
+}
+
 .text-link {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 .text-link a {
   color: #ff9999;
   text-decoration: underline;
-}
-
-.password-rules {
-  font-size: 0.9rem;
-  padding-left: 1.2rem;
-  margin-top: 1rem;
-}
-.text-success {
-  color: #4caf50;
-}
-.text-danger {
-  color: #ff4d4d;
-}
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
 }

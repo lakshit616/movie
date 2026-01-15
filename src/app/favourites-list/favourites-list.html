@@ -1,0 +1,55 @@
+  
+
+<app-header></app-header>
+
+
+@if(auth._isLoggedIn()){
+<div class="main" id="main-section">
+
+  <section class="home-container">
+    <h2 class="variable-title">Trending Movies</h2>
+
+
+    <div class="movie-grid">
+      @for (movie of movies(); track movie.imdbId) {
+        <div
+          class="movie-card"
+          (click)="selectMovie(movie.Title)"
+          
+          [class.blurred]="selectedMovie() && selectedMovie()?.id !== movie.id"
+        >
+          <img [src]="movie.Poster" alt="{{ movie.title }}" />
+          <h3>{{ movie.Title }}</h3>
+          <p class="genre-rating">{{ movie.Genre }} | ⭐ {{ movie.imdbRating }}</p>
+          <p class="desc">{{ movie.Director }}</p>
+        </div>
+      }
+    </div>
+
+    @if (selectedMovie()) {
+      <div class="overlay" (click)="clearSelection()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
+          <img [src]="selectedMovie()?.Poster" alt="Selected Movie Poster" />
+          <div class="movie-details">
+            <h2>{{ selectedMovie()?.Title }}</h2>
+            <p>{{ selectedMovie()?.Genre }} | ⭐ {{ selectedMovie()?.imdbRating }}</p>
+            <p>{{ selectedMovie()?.Plot }}</p>
+            <p>Language - {{ selectedMovie()?.Language }}</p>
+            <p>Runtime - {{ selectedMovie()?.Runtime }}</p>
+            <p>Actors - {{selectedMovie()?.Actors}}</p>
+            <p>Director - {{selectedMovie()?.Director}}</p>
+            <p>Writer - {{selectedMovie()?.Writer }}</p>
+           
+
+          </div>
+        </div>
+      </div>
+    }
+  </section>
+</div>
+}
+
+
+<!-- <app-contact>
+  <div class="contact" id="contact-section"></div>
+</app-contact> -->
